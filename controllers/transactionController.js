@@ -57,3 +57,42 @@ exports.addTransaction = async (req, res) => {
     res.status(500).json({ success: false, error: err.message });
   }
 };
+
+//added this funtion during task 5 where  this function to existing controller
+exports.getTransactions = async (req, res) => {
+  try {
+    let query = {};
+
+    //Filter by dateOfTransaction (exact date)
+    if (req.query.dateOfTransaction) {
+      const date = new Date(req.query.dateOfTransaction);
+      if (!isNaN(date)) {
+        query.dateOfTransaction = {
+          $gte: new Date(date.setHours(0, 0, 0, 0)),
+          $lt: new Date(date.setHours(23, 59, 59, 999))
+        };
+      }
+    }
+
+    //Filter by userId
+    if (req.query.userId) {
+      query.userId = req.query.userId;
+    }
+
+    //Filter by transactionAmount
+    if (req.query.transactionAmount) {
+      query.transactionAmount = parseFloat(req.query.transactionAmount);
+    }
+
+    const transactions = await Transaction.find(query);
+
+    res.status(200).json({
+      success: true,
+      count: transactions.length,
+      data: transactions
+    });
+
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+};
