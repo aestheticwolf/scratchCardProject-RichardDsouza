@@ -7,6 +7,7 @@ require('dotenv').config();
 const app = express();
 const userRoutes = require('./routes/userRoutes');
 const scratchCardRoutes = require('./routes/scratchCardRoutes');
+const transactionRoutes = require('./routes/transactionRoutes');
 
 // Connect to DB
 connectDB();
@@ -17,6 +18,7 @@ app.use(express.json());
 
 app.use('/api/users', userRoutes);
 app.use('/api/scratchcards', scratchCardRoutes);
+app.use('/api/transactions', transactionRoutes);
 
 // Test Route
 app.get('/', (req, res) => {

@@ -54,3 +54,22 @@ exports.generateScratchCards = async (req, res) => {
     res.status(500).json({ success: false, error: err.message });
   }
 };
+
+//Added function to existing controller
+exports.getUnusedScratchCards = async (req, res) => {
+  try {
+    const unusedCards = await ScratchCard.find({
+      isScratched: false,
+      isActive: true,
+      expiryDate: { $gt: new Date() }
+    }).sort({ createdAt: -1 });
+
+    res.status(200).json({
+      success: true,
+      count: unusedCards.length,
+      data: unusedCards
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+};
