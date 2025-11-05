@@ -25,6 +25,15 @@ app.get('/', (req, res) => {
   res.send('Hello World! Welcome to Scratch Card API by Richard D\'souza');
 });
 
+//Health check for frontend end point which is task 6
+app.get('/api/health', (req, res) => {
+  res.status(200).json({ 
+    status: 'OK',
+    message: 'Scratch Card API is running',
+    timestamp: new Date().toISOString()
+  });
+});
+
 // Port
 const PORT = process.env.PORT || 3000;
 
