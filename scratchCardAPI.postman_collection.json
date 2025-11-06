@@ -1,0 +1,137 @@
+{
+  "info": {
+    "name": "Scratch Card API - Richard D'souza",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "TASK 1: CRUD USER API",
+      "item": [
+        {
+          "name": "Create User",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userEmail\": \"richard.dsouza@test.com\",\n  \"firstName\": \"Richard\",\n  \"lastName\": \"D'souza\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "http://localhost:3000/api/users"
+          }
+        },
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://localhost:3000/api/users"
+          }
+        }
+      ]
+    },
+    {
+      "name": "TASK 2: GENERATE SCRATCH CARD API",
+      "item": [
+        {
+          "name": "Generate 1 Scratch Card",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"numberOfScratchCards\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "http://localhost:3000/api/scratchcards/generate"
+          }
+        }
+      ]
+    },
+    {
+      "name": "TASK 3: ADD TRANSACTION API",
+      "item": [
+        {
+          "name": "Add Transaction (Replace IDs after generating data)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"YOUR_USER_ID_HERE\",\n  \"scratchCardId\": \"YOUR_SCRATCH_CARD_ID_HERE\",\n  \"transactionAmount\": 250\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "http://localhost:3000/api/transactions"
+          }
+        }
+      ]
+    },
+    {
+      "name": "TASK 4: GET UNUSED SCRATCH CARDS",
+      "item": [
+        {
+          "name": "Get Unused Scratch Cards",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://localhost:3000/api/scratchcards/unused"
+          }
+        }
+      ]
+    },
+    {
+      "name": "TASK 5: GET TRANSACTIONS API",
+      "item": [
+        {
+          "name": "Get All Transactions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://localhost:3000/api/transactions"
+          }
+        },
+        {
+          "name": "Filter by User ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://localhost:3000/api/transactions?userId=YOUR_USER_ID_HERE"
+          }
+        },
+        {
+          "name": "Filter by Amount",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://localhost:3000/api/transactions?transactionAmount=250"
+          }
+        }
+      ]
+    },
+    {
+      "name": "TASK 6: ADDITIONAL ENDPOINTS",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://localhost:3000/api/health"
+          }
+        }
+      ]
+    }
+  ]
+}
