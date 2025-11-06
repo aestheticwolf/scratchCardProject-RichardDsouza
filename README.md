@@ -13,6 +13,6 @@ Features added are:
 -Health check endpoint for frontend
 
 
-i have also aded postman file export 
+I have also aded postman file export 
 
-Documented in `ScratchCardAPI_RichardDsouza.postman_collection.json`
+Documented in `scratchCardAPI.postman_collection.json`
